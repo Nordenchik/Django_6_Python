@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50)),
-                ('description', models.CharField(help_text='Опишіть завдання...', max_length=1000)),
+                ('description', models.CharField(help_text='Опишіть завдання.', max_length=1000)),
                 ('status', models.CharField(max_length=100)),
                 ('priority', models.IntegerField()),
                 ('progress_termin', models.DateField()),

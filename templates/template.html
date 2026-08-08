@@ -4,16 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Task Tracking</title>
-        <style>
-            .description {
-                font-size: 75%;
-            }
-        </style>
     </head>
     <body>
         <h1>Task Tracking</h1>
         {% for task in tasks %}
-            <p>{{ task.name }}</p>
+            <h2>{{ task.name }}</h2>
             <p>{{ task.description }}</p>
         {% endfor %}
     </body>

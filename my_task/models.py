@@ -6,3 +6,5 @@ class Task(models.Model):
     status = models.CharField(max_length=100)
     priority = models.IntegerField()
     progress_termin = models.DateField()
+
+    def __str__(self): return self.name
