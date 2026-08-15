@@ -1,18 +1,20 @@
 from django.shortcuts import render
-from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Task
+from .mixins import UserIsOwnerMixin
 
 class TaskList(ListView):
     model = Task
     template_name = 'template.html'
     context_object_name = 'tasks'
 
-class TaskDetail(ListView):
+class TaskDetail(DetailView):
     model = Task
     template_name = 'task_detail.html'
     context_object_name = 'task'
 
-class TaskCreate(ListView):
+class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     fields = ['name', 'description', 'status', 'priority', 'progress_termin']
     template_name = 'task_create.html'
@@ -22,7 +24,7 @@ class TaskCreate(ListView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class TaskUpdate(ListView):
+class TaskUpdate(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
     model = Task
     fields = ['name', 'description', 'status', 'priority', 'progress_termin']
     template_name = 'task_update.html'
@@ -32,7 +34,7 @@ class TaskUpdate(ListView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class TaskDelete(ListView):
+class TaskDelete(LoginRequiredMixin, UserIsOwnerMixin, DeleteView):
     model = Task
     template_name = 'task_update.html'
     context_object_name = 'task'
