@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Вхід{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+        <h1 class="h4 mb-3">Вхід в акаунт</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}">
+            {% endif %}
+            <button class="btn btn-primary" type="submit">Увійти</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

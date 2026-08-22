@@ -13,9 +13,12 @@
                 <div class="ms-auto">
                     {% if user.is_authenticated %}
                         <span class="me-2">{{ user.username }}</span>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">Вийти</a>
+                        <form method="post" action="{% url 'logout' %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">Вийти</button>
+                        </form>
                     {% else %}
-                        <a href="#" class="btn btn-primary btn-sm">Увійти</a>
+                        <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Увійти</a>
                     {% endif %}
                 </div>
             </div>

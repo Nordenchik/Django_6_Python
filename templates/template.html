@@ -15,15 +15,15 @@
         <button class="btn btn-primary">Фільтрувати</button>
     </div>
 </form>
-{% if articles %}
+{% if tasks %}
     <div class="list-group mb-3">
-        {% for a in articles %}
+        {% for a in tasks %}
         <a class="list-group-item list-group-item-action" href="{% url 'tasks:task_detail' a.pk %}">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{ a.title }}</h5>
+                <h5 class="mb-1">{{ a.name }}</h5>
                 <small class="text-muted">{{ a.get_status_display }} · {{ a.get_priority_display }}</small>
             </div>
-            <small class="text-muted">Автор: {{ a.author }} · {{ a.created_at|date:"d.m.Y H:i" }}</small>
+            <small class="text-muted">Автор: {{ a.user }} · {{ a.created_at|date:"d.m.Y H:i" }}</small>
         </a>
         {% endfor %}
     </div>
