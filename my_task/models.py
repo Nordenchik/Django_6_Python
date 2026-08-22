@@ -8,5 +8,6 @@ class Task(models.Model):
     priority = models.IntegerField()
     progress_termin = models.DateField(null=True, blank=True)
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self): return self.name

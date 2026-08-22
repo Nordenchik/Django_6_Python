@@ -23,7 +23,19 @@
                 <h5 class="mb-1">{{ a.name }}</h5>
                 <small class="text-muted">{{ a.get_status_display }} · {{ a.get_priority_display }}</small>
             </div>
-            <small class="text-muted">Автор: {{ a.user }} · {{ a.created_at|date:"d.m.Y H:i" }}</small>
+            <div>
+                <small class="text-muted">Створено: {{ a.created_at|date:"d.m.Y H:i" }}</small>
+                <small class="text-muted">Автор: {{ a.user }}</small>
+                <small class="text-muted">Опис: {{ a.description }}</small>
+                {% if a.image %}
+                    <div class="mt-2">
+                        <img src="{{ a.image.url }}" alt="Зображення завдання" class="img-fluid">
+                    </div>
+                {% endif %}
+                <small class="text-muted">Статус: {{ a.status }}</small>
+                <small class="text-muted">Пріоритет: {{ a.priority }}</small>
+                <small class="text-muted">Термін виконання: {{ a.progress_termin|date:"d.m.Y" }}</small>
+            </div>
         </a>
         {% endfor %}
     </div>
