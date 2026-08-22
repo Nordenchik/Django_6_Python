@@ -5,17 +5,17 @@ from .models import Task
 from .mixins import UserIsOwnerMixin
 
 class TaskList(ListView):
-    model = Task
+    model = Task()
     template_name = 'template.html'
     context_object_name = 'tasks'
 
 class TaskDetail(DetailView):
-    model = Task
+    model = Task()
     template_name = 'task_detail.html'
     context_object_name = 'task'
 
 class TaskCreate(LoginRequiredMixin, CreateView):
-    model = Task
+    model = Task()
     fields = ['name', 'description', 'status', 'priority', 'progress_termin']
     template_name = 'task_create.html'
     context_object_name = 'task'
@@ -25,7 +25,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 class TaskUpdate(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
-    model = Task
+    model = Task()
     fields = ['name', 'description', 'status', 'priority', 'progress_termin']
     template_name = 'task_update.html'
     context_object_name = 'task'
@@ -35,7 +35,7 @@ class TaskUpdate(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
         return super().form_valid(form)
 
 class TaskDelete(LoginRequiredMixin, UserIsOwnerMixin, DeleteView):
-    model = Task
+    model = Task()
     template_name = 'task_update.html'
     context_object_name = 'task'
 
