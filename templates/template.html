@@ -34,7 +34,7 @@
                 {% endif %}
                 <small class="text-muted">Статус: {{ a.status }}</small>
                 <small class="text-muted">Пріоритет: {{ a.priority }}</small>
-                <small class="text-muted">Термін виконання: {{ a.progress_termin|date:"d.m.Y" }}</small>
+                <small class="text-muted">Термін виконання: {{ a.progress_termin|date:"d/m/Y" }}</small>
             </div>
         </a>
         {% endfor %}

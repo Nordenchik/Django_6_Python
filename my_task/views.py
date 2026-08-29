@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .forms import TaskForm
 from .models import Task
 from .mixins import UserIsOwnerMixin
 
@@ -16,7 +17,7 @@ class TaskDetail(DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['name', 'description', 'status', 'priority', 'progress_termin']
+    form_class = TaskForm
     template_name = 'task_create.html'
     context_object_name = 'task'
     success_url = '/'
@@ -27,7 +28,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
     model = Task
-    fields = ['name', 'description', 'status', 'priority', 'progress_termin']
+    form_class = TaskForm
     template_name = 'task_update.html'
     context_object_name = 'task'
     success_url = '/'
