@@ -12,9 +12,7 @@
 
 <div class="row g-4">
     <div class="col-12 col-lg-8">
-        {% if task.image %}
-            <img src="{{ task.image.url }}" alt="Зображення завдання «{{ task.name }}»" class="img-fluid rounded mb-4">
-        {% endif %}
+        {% if task.image %}<img src="{{ task.image.url }}" alt="Зображення завдання «{{ task.name }}»" class="img-fluid rounded mb-4">{% endif %}
         <section>
             <h2 class="h5">Опис завдання</h2>
             {% if task.description %}
@@ -43,9 +41,7 @@
 {% if user == task.user %}
     <div class="mt-4">
     <a href="{% url 'tasks:task_update' task.id %}" class="btn btn-outline-primary">Редагувати</a>
-    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">
-        Видалити
-    </button>
+    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteTaskModal">Видалити</button>
 
     <div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-labelledby="deleteTaskModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -54,9 +50,7 @@
                     <h2 class="modal-title fs-5" id="deleteTaskModalLabel">Видалити завдання?</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
                 </div>
-                <div class="modal-body">
-                    Ви впевнені, що хочете видалити «{{ task.name }}»? Цю дію неможливо скасувати.
-                </div>
+                <div class="modal-body">Ви впевнені, що хочете видалити «{{ task.name }}»? Цю дію неможливо скасувати.</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
                     <form method="post" action="{% url 'tasks:task_delete' task.id %}">
