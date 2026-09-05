@@ -1,0 +1,18 @@
+<label for="{{ widget.attrs.id }}" class="btn btn-outline-secondary">Вибрати файл</label>
+<input type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+<span id="{{ widget.attrs.id }}-name" class="ms-2 text-muted">
+    {% if widget.has_existing_image %}Поточний файл: {{ widget.existing_image_name }}{% else %}Файл не вибрано{% endif %}
+</span>
+<script>
+    document.getElementById('{{ widget.attrs.id }}')?.addEventListener('change', function () {
+        const name = document.getElementById('{{ widget.attrs.id }}-name');
+        const existingName = '{{ widget.existing_image_name|escapejs }}';
+        if (name) {
+            name.textContent = this.files.length
+                ? this.files[0].name
+                : existingName
+                    ? `Поточний файл: ${existingName}`
+                    : 'Файл не вибрано';
+        }
+    });
+</script>

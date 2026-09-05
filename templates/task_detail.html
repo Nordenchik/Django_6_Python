@@ -12,7 +12,7 @@
 
 <div class="row g-4">
     <div class="col-12 col-lg-8">
-        {% if task.image %}<img src="{{ task.image.url }}" alt="Зображення завдання «{{ task.name }}»" class="img-fluid rounded mb-4">{% endif %}
+        {% if task.image %}<img src="{{ task.image.url }}" alt="Зображення завдання «{{ task.name }}»" class="img-fluid w-25 rounded mb-4">{% endif %}
         <section>
             <h2 class="h5">Опис завдання</h2>
             {% if task.description %}

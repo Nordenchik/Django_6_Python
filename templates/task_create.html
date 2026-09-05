@@ -2,7 +2,7 @@
 {% block title %}{% if object %}Редагувати{% else %}Створити{% endif %} завдання{% endblock %}
 {% block content %}
 <h1 class="h4">{% if object %}Редагувати{% else %}Створити{% endif %} завдання</h1>
-    <form method="post" class="mt-3">
+    <form method="post" enctype="multipart/form-data" class="mt-3">
     {% csrf_token %}
     {{ form.as_p }}
     <div class="mt-4 d-flex gap-2">
