@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Змінити завдання{% endblock %}
+{% block content %}
+<h1 class="h3 mb-3">Змінити завдання</h1>
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit" class="btn btn-primary">Зберегти зміни</button>
+	<a href="{% url 'tasks:task_detail' task.id %}" class="btn btn-secondary">Скасувати</a>
+</form>
+{% endblock %}

@@ -39,10 +39,6 @@ class TaskUpdate(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
 
 class TaskDelete(LoginRequiredMixin, UserIsOwnerMixin, DeleteView):
     model = Task
-    template_name = 'task_update.html'
+    template_name = 'task_confirm_delete.html'
     context_object_name = 'task'
     success_url = '/'
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
